@@ -4,8 +4,8 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "shell",
-            "label": "build active file",
+            "type": "cppbuild",
+            "label": "File - g++",
             "command": "/usr/bin/g++",
             "args": [
                 "-g",
@@ -28,6 +28,26 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "type": "cppbuild",
+            "label": "File - gcc",
+            "command": "/usr/bin/gcc",
+            "args": [
+                "-g",
+                "${file}",
+                "-std=c99",
+                "-Wall",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.out"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
         }
     ]
 }
