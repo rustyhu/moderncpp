@@ -1,18 +1,25 @@
 #include <iostream>
-#include <memory>
 #include <vector>
 
-int main() {
-    std::vector<int> avec;
-    avec.reserve(8);
-    std::cout << "avec capacity: " << avec.capacity() << "\n";
+int main(void) {
+  auto fshow = [](const std::string prefix, const std::vector<int>& m) {
+    std::cout << prefix << ": Size - " << m.size() << " Cap - " << m.capacity()
+              << " sizeof - " << sizeof(m) << ";\n";
+  };
 
-    avec.push_back(-13);
+  std::vector<int> msg;
+  fshow("Start", msg);
 
-    std::cout << "avec size: " << avec.size() << "\n";
-    std::cout << "avec content: [";
-    for (const auto& e : avec) {
-        std::cout << e << " ";
-    }
-    std::cout << "]\n";
+  msg.reserve(10);
+  fshow("After reserved", msg);
+
+  for (size_t i = 0; i < 4; i++) {
+    msg.emplace_back(i);
+  }
+  fshow("After push", msg);
+
+  for (size_t i = 4; i < 17; i++) {
+    msg.emplace_back(i);
+  }
+  fshow("After exhausted", msg);
 }
