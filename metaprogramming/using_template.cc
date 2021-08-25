@@ -5,18 +5,20 @@ template <typename T>
 using Nmap = std::map<T, std::string>;
 
 void showUsingTemplate() {
-    Nmap<int> a = {
-        {1, "name"},
-        {2, "kkk"},
-    };
+  Nmap<int> a = {
+      {1, "name"},
+      {2, "kkk"},
+  };
 
-    for (auto&& ele : a) {
-        std::cout << ele.first << " : " << ele.second << std::endl;
-    }
+  for (auto&& ele : a) {
+    std::cout << ele.first << " : " << ele.second << std::endl;
+  }
 }
 
 template <typename T>
 void showTemplateFunc(T&& t) {
-    std::cout << "Running template func...\n";
-    std::cout << "Counting: " << t.size() << "\n";
+  std::cout << "Running template func...\n";
+  std::cout << "Counting: " << t.size() << "\n";
 }
+
+int main(void) {}
