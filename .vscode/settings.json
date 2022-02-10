@@ -47,7 +47,18 @@
         "random": "cpp",
         "cmath": "cpp",
         "numeric": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "cassert": "cpp",
+        "cerrno": "cpp",
+        "cstddef": "cpp",
+        "cstring": "cpp",
+        "deque": "cpp",
+        "set": "cpp",
+        "iterator": "cpp",
+        "ios": "cpp",
+        "queue": "cpp",
+        "stdio.h": "c",
+        "stdlib.h": "c"
     },
     "editor.formatOnSave": true
 }

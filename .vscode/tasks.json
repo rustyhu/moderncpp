@@ -5,7 +5,7 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "File - g++",
+            "label": "Current File - g++",
             "command": "/usr/bin/g++",
             "args": [
                 "-g",
@@ -31,7 +31,7 @@
         },
         {
             "type": "cppbuild",
-            "label": "File - gcc",
+            "label": "Current File - gcc",
             "command": "/usr/bin/gcc",
             "args": [
                 "-g",
