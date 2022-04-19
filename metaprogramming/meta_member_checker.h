@@ -12,7 +12,8 @@ struct has_name<T, decltype((void)T::name)> : std::true_type {};
 // 1. Cast from "any type" (T::name) to "void" always works;
 // 2. Make it compatible with default type parameter --
 //      class template interface is defined by the original tmplate definition
-//      totally, which should not be violated by partial template specialization
+//      completely, which should not be violated by partial template
+//      specialization.
 
 struct Res1 {
   char name[16];
@@ -26,20 +27,20 @@ struct Res3 {};
 
 template <typename T, typename = void>
 class DispT {
+ private:
+  const char* s_ = "Hello!\n";
+
  public:
-  DispT() { Hello(); }
-  void Hello() { std::cout << "Hello!\n"; }
+  DispT() { std::cout << s_; }
+  const char* Hello() { return s_; }
 };
 
 template <typename T>
 class DispT<T, typename std::enable_if<has_name<T>::value>::type> {
- public:
-  DispT() { Bar(); }
-  void Bar() { std::cout << "Bar!\n"; }
-};
+ private:
+  const char* ss_ = "Bar!\n";
 
-int main() {
-  DispT<Res1> a;
-  DispT<Res2> b;
-  DispT<Res3> c;
-}
+ public:
+  DispT() { std::cout << ss_; }
+  const char* Bar() { return ss_; }
+};
