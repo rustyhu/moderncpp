@@ -19,9 +19,8 @@ class myInfo {
 
 myInfo adata[] = {5, 3, 2, 1};
 
-// concern about this template
 template <typename DATA>
-void riskF(std::function<DATA*()> Get) {
+void Caller(std::function<DATA*()> Get) {
   for (auto& i : adata) {
     DATA* p = Get();
     *p = i;
@@ -36,7 +35,7 @@ int main(void) {
   }
 
   int idx = 0;
-  riskF<myInfo>([&idx, &pool]() {
+  Caller<myInfo>([&idx, &pool]() {
     int i = idx;
     idx++;
     return &pool[i];
