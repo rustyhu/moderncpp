@@ -58,7 +58,13 @@
         "ios": "cpp",
         "queue": "cpp",
         "stdio.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "bitset": "cpp",
+        "regex": "cpp",
+        "future": "cpp",
+        "iomanip": "cpp",
+        "shared_mutex": "cpp",
+        "variant": "cpp"
     },
     "editor.formatOnSave": true
 }
