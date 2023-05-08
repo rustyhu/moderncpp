@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <type_traits>
 
 // involve
@@ -11,36 +12,26 @@ struct has_name<T, decltype((void)T::name)> : std::true_type {};
 // "(void)" in decltype() is used to:
 // 1. Cast from "any type" (T::name) to "void" always works;
 // 2. Make it compatible with default type parameter --
-//      class template interface is defined by the original tmplate definition
-//      completely, which should not be violated by partial template
-//      specialization.
-
-struct Res1 {
-  char name[16];
-};
-
-struct Res2 {
-  std::string name;
-};
-
-struct Res3 {};
+//    class template interface is defined by the original tmplate definition
+//    completely, which should not be violated by partial template
+//    specialization.
 
 template <typename T, typename = void>
 class DispT {
  private:
-  const char* s_ = "Hello!\n";
+  std::string s_ = "None!\n";
 
  public:
   DispT() { std::cout << s_; }
-  const char* Hello() { return s_; }
+  std::string Hello() { return s_; }
 };
 
 template <typename T>
 class DispT<T, typename std::enable_if<has_name<T>::value>::type> {
  private:
-  const char* ss_ = "Bar!\n";
+  std::string ss_ = "Exist!\n";
 
  public:
   DispT() { std::cout << ss_; }
-  const char* Bar() { return ss_; }
+  std::string Bar() { return ss_; }
 };
