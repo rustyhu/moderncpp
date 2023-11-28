@@ -1,44 +1,43 @@
 // https://stackoverflow.com/questions/2565097/higher-kinded-types-with-c
 // Monad
 
-template <template <typename> typename m>
+template <template <typename> typename M>
 struct Monad {
-  template <typename a>
-  static m<a> mreturn(const a&);
+  template <typename A>
+  static M<A> mreturn(const A&);
 
-  template <typename a, typename b>
-  static m<b> mbind(const m<a>&, m<b> (*)(const a&));
+  template <typename A, typename B>
+  static M<B> mbind(const M<A>&, M<B> (*)(const A&));
 };
 
-template <typename a>
+template <typename A>
 struct Maybe {
   bool isNothing;
-  a value;
+  A value;
 };
 
 template <>
 struct Monad<Maybe> {
-  template <typename a>
-  static Maybe<a> mreturn(const a& v) {
-    Maybe<a> x;
+  template <typename A>
+  static Maybe<A> mreturn(const A& v) {
+    Maybe<A> x;
     x.isNothing = false;
     x.value = v;
     return x;
   }
 
-  template <typename a, typename b>
-  static Maybe<b> mbind(const Maybe<a>& action,
-                        Maybe<b> (*function)(const a&)) {
+  template <typename A, typename B>
+  static Maybe<B> mbind(const Maybe<A>& action, Maybe<B> (*func)(const A&)) {
     if (action.isNothing)
-      return Maybe<b>{true, b{}};
+      return Maybe<B>{true, B{}};
     else
-      return function(action.value);
+      return func(action.value);
   }
 };
 
 Maybe<char> tns(const int& n) {
-  char a = (n % 10) + 'a';
-  return Maybe<char>{false, a};
+  char v = (n % 10) + 'a';
+  return Maybe<char>{false, v};
 }
 
 int main() {
