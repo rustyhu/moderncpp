@@ -14,11 +14,3 @@ void showUsingTemplate() {
     std::cout << ele.first << " : " << ele.second << std::endl;
   }
 }
-
-template <typename T>
-void showTemplateFunc(T&& t) {
-  std::cout << "Running template func...\n";
-  std::cout << "Counting: " << t.size() << "\n";
-}
-
-int main(void) {}

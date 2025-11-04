@@ -66,5 +66,7 @@
         "shared_mutex": "cpp",
         "variant": "cpp"
     },
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "cmake.ignoreCMakeListsMissing": true,
+    "C_Cpp.default.compilerPath": "/usr/bin/g++"
 }

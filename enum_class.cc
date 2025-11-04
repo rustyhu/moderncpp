@@ -1,6 +1,7 @@
+#include <cstdint>
 #include <iostream>
 
-enum class OptionalFieldType : uint8_t {
+enum class OptionalFieldType : std::uint8_t {
     Int8 = 0,
     Int16,
     Int32,
